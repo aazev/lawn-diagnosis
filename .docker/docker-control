@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Set the user and group ID environment variables
+export USER_ID=$(id -u)
+export GROUP_ID=$(id -g)
+
+# Function to start the containers
+start_containers() {
+    # Check if mysql-data directory exists, if not, create it
+    if [ ! -d "./mysql-data" ]; then
+        mkdir ./mysql-data
+        chown $USER_ID:$GROUP_ID ./mysql-data
+    fi
+
+    # Start Docker Compose
+    docker compose -f .docker/docker-compose.yml up $@
+}
+
+# Handle different commands
+case $1 in
+    start)
+        start_containers "${@:2}"
+        ;;
+
+    stop)
+        docker compose -f .docker/docker-compose.yml down
+        ;;
+
+    logs)
+        docker compose -f .docker/docker-compose.yml logs -f
+        ;;
+
+    connect-db)
+        docker exec -it lawnstarter_mysql mysql -ulawnstarter -psecret
+        ;;
+
+    *)
+        echo "Unknown command: $1"
+        echo "Available commands: start, stop, logs, connect-db"
+        exit 1
+        ;;
+esac
+

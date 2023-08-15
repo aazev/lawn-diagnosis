@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: lawnstarter_mysql
+    user: "${USER_ID}:${GROUP_ID}"
+    environment:
+      MYSQL_DATABASE: lawn_diagnosis
+      MYSQL_USER: lawn_diagnosis
+      MYSQL_PASSWORD: lawndiag
+      MYSQL_ROOT_PASSWORD: rootlawndiag
+    ports:
+      - "3307:3306"
+    volumes:
+      - ../mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+
