@@ -31,7 +31,7 @@ case $1 in
         ;;
 
     connect-db)
-        docker exec -it lawnstarter_mysql mysql -ulawnstarter -psecret
+        docker exec -it lawnstarter_mysql mysql -ulawn_diagnosis -plawndiag lawn_diagnosis
         ;;
 
     *)

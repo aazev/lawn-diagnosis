@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class ApiTokenControllerTest extends TestCase
@@ -15,7 +14,7 @@ class ApiTokenControllerTest extends TestCase
     {
         $user = User::factory()->create([
             'email' => 'test@example.com',
-            'password' => Hash::make('password')
+            'password' => 'password'
         ]);
 
         $response = $this->actingAs($user)->postJson('/api/token', [

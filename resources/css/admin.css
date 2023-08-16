@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.quote::before {
+    content: "\201C"; /* Unicode for the left double quotation mark */
+}
+
+.quote::after {
+    content: "\201D"; /* Unicode for the right double quotation mark */
+}

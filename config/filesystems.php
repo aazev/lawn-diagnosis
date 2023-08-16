@@ -36,6 +36,11 @@ return [
             'throw' => false,
         ],
 
+        'avatars' => [
+            'driver' => 'local',
+            'root' => storage_path(env("AVATAR_STORAGE", 'app/avatars')),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

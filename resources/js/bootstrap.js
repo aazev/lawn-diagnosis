@@ -3,11 +3,13 @@
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
+import 'flowbite';
 
 import axios from 'axios';
+
 window.axios = axios;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -30,3 +32,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+document.querySelectorAll("[data-error]").forEach((errorDiv) => {
+    const delay = errorDiv.getAttribute("data-error") || 3000;
+    setTimeout(() => {
+        errorDiv.style.opacity = 0;
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 500);
+    }, delay);
+});
