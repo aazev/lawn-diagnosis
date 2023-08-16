@@ -36,6 +36,7 @@ A simple application to manage, edit, and review issues.
 To get started with development:
 
 ```bash
+make start
 pnpm install
 pnpm dev
 ```
