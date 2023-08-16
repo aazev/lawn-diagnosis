@@ -36,6 +36,9 @@ A simple application to manage, edit, and review issues.
 To get started with development:
 
 ```bash
+composer install
+cp .env.example .env
+php artisan key:generate
 make start
 pnpm install
 pnpm dev
